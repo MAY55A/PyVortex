@@ -7,17 +7,22 @@ parser = argparse.ArgumentParser(description="Draw vortex patterns with Python t
 parser.add_argument("--radius", type=int, default=200, help="Circle radius")
 parser.add_argument("--base", type=int, default=235, help="Number of points on the circle")
 parser.add_argument("--multiplier", type=int, default=19, help="Multiplier for connecting points")
+parser.add_argument("--color", type=str, default="black", help="Color of the points and lines")
+parser.add_argument("--dot_size", type=int, default=5, help="Size of the points")
 args = parser.parse_args()
 
 radius = args.radius
 base = args.base
 multiplier = args.multiplier
+color = args.color
+dot_size = args.dot_size
 
 # Setup turtle
 turtle.setup(800, 800)
 turtle.title(f'Vortex-{base}-{multiplier}')
 pen = turtle.Turtle()
 pen.speed(10)
+pen.color(color)
 
 # Function to draw points on the circumference
 def draw_points_on_circle(radius, base):
@@ -40,7 +45,7 @@ def draw_points_on_circle(radius, base):
         pen.penup()
         pen.goto(x, y)
         pen.pendown()
-        pen.dot(5, "black")  # 5 is the size of the dot, "red" is the color
+        pen.dot(dot_size, color)
         
         # Write the point number next to the dot
         '''
