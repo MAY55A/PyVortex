@@ -25,7 +25,7 @@ show_numbers = args.show_numbers
 turtle.setup(800, 800)
 turtle.title(f'Vortex-{base}-{multiplier}')
 pen = turtle.Turtle()
-pen.speed(10)
+pen.speed(0)
 pen.color(color)
 
 # Function to draw points on the circumference
