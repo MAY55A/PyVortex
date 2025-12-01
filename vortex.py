@@ -40,8 +40,9 @@ def draw_points_on_circle(radius, base):
     angle_between_points = 360 / (base-1)
 
     # Draw points on the circumference
-    for i in range(base-1):
-        angle = math.radians(-i * angle_between_points + 90)
+    numbers = [base-1] + list(range(1, base-1)) # start with base-1 instead of 0
+    for i in numbers:
+        angle = math.radians(-(i%(base-1)) * angle_between_points + 90) # i%(base-1) for the case were i=base-1 so it goes to 0 position
         x = radius * math.cos(angle)
         y = radius * math.sin(angle)
         points.append((x, y))
