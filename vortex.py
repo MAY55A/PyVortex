@@ -53,7 +53,7 @@ def draw_points_on_circle(radius, base):
             pen.dot(dot_size, color)
         if show_numbers:
             # Write the point number
-            font_size = max(8, min(16, 200 // base)) # Adjust font size based on number of points
+            font_size = max(8, min(16, int((radius / base) * 2))) # Adjust font size based on radius and number of points
             label_offset = font_size  # distance outside the circle
             label_x = x + label_offset * math.cos(angle)
             label_y = y + label_offset * math.sin(angle)
