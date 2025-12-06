@@ -13,7 +13,22 @@ parser.add_argument("--dot_size", type=int, default=5, help="Size of the points"
 parser.add_argument("--show_numbers", action='store_true', help="Show point numbers")
 args = parser.parse_args()
 
-radius = args.radius
+# Limit radius to fit on screen and adjust window size
+turtle.setup(1.0, 1.0) # full screen initially
+screen = turtle.Screen() # get the screen with current Physical size
+max_radius = min(screen.window_width(), screen.window_height()) // 2 - 20 # leave some margin
+min_radius = 50
+if args.radius > max_radius:
+    radius = max_radius
+    print(f"\033[33mWarning: radius too large, setting radius to {max_radius}\033[0m") # yellow warning
+else:
+    if args.radius < min_radius:
+        radius = min_radius
+        print(f"\033[33mWarning: radius too small, setting radius to {min_radius}\033[0m") # yellow warning
+    else:
+        radius = args.radius
+    turtle.setup(radius * 2 + 40, radius * 2 + 40) # adjust window size based on radius
+
 base = args.base
 multiplier = args.multiplier
 color = args.color
@@ -22,7 +37,6 @@ dot_size = args.dot_size
 show_numbers = args.show_numbers
 
 # Setup turtle
-turtle.setup(800, 800)
 turtle.title(f'Vortex-{base}-{multiplier}')
 pen = turtle.Turtle()
 pen.speed(0)
