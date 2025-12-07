@@ -25,6 +25,7 @@ While this “vortex math” is **not scientifically accurate** and widely consi
   - `base` (number of circle points)
   - `multiplier`
   - `color`
+  - `background_color`
   - optional dots & labels
 - Beginner-friendly code  
 - No external libraries required  
@@ -37,6 +38,7 @@ While this “vortex math” is **not scientifically accurate** and widely consi
 | **Tesla's vortex** | <img src="examples/vortex-10-2.png" width="200"/> | `base=10`, `multiplier=2` | `python vortex.py --base 10 --multiplier 2  --show_numbers --show_dots` |
 | **Default vortex** | <img src="examples/vortex-235-19.png" width="200"/> | `base=235`, `multiplier=19` | `python vortex.py` |
 | **Detailed colored vortex** | <img src="examples/vortex-500-9.png" width="200"/> | `base=500`, `multiplier=9` | `python vortex.py --radius 300 --base 500 --multiplier 9  --color violet` |
+| **Simple background-colored vortex** | <img src="examples/vortex-20-3.png" width="200"/> | `base=20`, `multiplier=3` | `python vortex.py --base 20 --multiplier 3  --color yellow --background_color black` |
 
 
 ## How It Works
@@ -55,14 +57,7 @@ Clone the repo and run:
 git clone https://github.com/MAY55A/PyVortex.git
 cd PyVortex
 
-python vortex.py [-h] 
-    [--radius RADIUS] 
-    [--base BASE] 
-    [--multiplier MULTIPLIER] 
-    [--color COLOR] 
-    [--show_dots] 
-    [--dot_size DOT_SIZE] 
-    [--show_numbers]
+python vortex.py [-h] [--radius RADIUS] [--base BASE] [--multiplier MULTIPLIER] [--color COLOR] [--background_color BACKGROUND_COLOR] [--show_dots] [--dot_size DOT_SIZE] [--show_numbers]
 ```
 
 ## Feedback Welcome 💬
