@@ -8,10 +8,25 @@ parser.add_argument("--radius", type=int, default=200, help="Circle radius")
 parser.add_argument("--base", type=int, default=235, help="Number of points on the circle")
 parser.add_argument("--multiplier", type=int, default=19, help="Multiplier for connecting points")
 parser.add_argument("--color", type=str, default="black", help="Color of the points and lines")
+parser.add_argument("--background_color", type=str, default="white", help="Background color of the window")
 parser.add_argument("--show_dots", action='store_true', help="Show dots at each point")
 parser.add_argument("--dot_size", type=int, default=5, help="Size of the points")
 parser.add_argument("--show_numbers", action='store_true', help="Show point numbers")
+
+# Assign arguments to variables
 args = parser.parse_args()
+base = args.base
+multiplier = args.multiplier
+color = args.color
+background_color = args.background_color
+show_dots = args.show_dots
+dot_size = args.dot_size
+show_numbers = args.show_numbers
+
+# Prevent same color for points/lines and background
+if color == background_color:
+    print(f"\033[31mError: Color cannot be the same as background color.\033[0m") # red error
+    exit(1)
 
 # Limit radius to fit on screen and adjust window size
 turtle.setup(1.0, 1.0) # full screen initially
@@ -29,18 +44,12 @@ else:
         radius = args.radius
     turtle.setup(radius * 2 + 40, radius * 2 + 40) # adjust window size based on radius
 
-base = args.base
-multiplier = args.multiplier
-color = args.color
-show_dots = args.show_dots
-dot_size = args.dot_size
-show_numbers = args.show_numbers
-
 # Setup turtle
 turtle.title(f'Vortex-{base}-{multiplier}')
 pen = turtle.Turtle()
 pen.speed(0)
 pen.color(color)
+turtle.bgcolor(background_color)
 
 # Function to draw points on the circumference
 def draw_points_on_circle(radius, base):
